@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
@@ -8,8 +9,11 @@ PASSWORD = "secret_sauce"
 URL = "https://www.saucedemo.com/"
 
 def get_driver():
-    #driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument("--window-size=1920,800")
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+    driver.implicitly_wait(10)
     return driver
 
 def open_login_page(driver, our_url):
