@@ -8,7 +8,8 @@ PASSWORD = "secret_sauce"
 URL = "https://www.saucedemo.com/"
 
 def get_driver():
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    #driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    driver = webdriver.Chrome()
     return driver
 
 def open_login_page(driver, our_url):
