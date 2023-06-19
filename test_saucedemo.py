@@ -39,18 +39,4 @@ driver = get_driver()
 open_login_page(driver, URL)
 login(driver=driver, name=USERNAME, password=PASSWORD)
 
-
-# ждем завершения состояния готовности
-WebDriverWait(driver=driver, timeout=10).until(
-    lambda x: x.execute_script("return document.readyState === 'complete'")
-)
-error_message = "Incorrect username or password."
-# получаем ошибки (если есть)
-errors = driver.find_elements(By.CLASS_NAME, "error")
-# если мы находим это сообщение об ошибке в составе error, значит вход не выполнен
-if any(error_message in e.text for e in errors):
-    print("[!] Login failed")
-else:
-    print("[+] Login successful")
-
 driver.quit()
