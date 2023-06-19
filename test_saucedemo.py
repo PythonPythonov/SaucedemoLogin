@@ -51,6 +51,6 @@ errors = driver.find_elements(By.CLASS_NAME, "error")
 if any(error_message in e.text for e in errors):
     print("[!] Login failed")
 else:
-    print("[+] Login successful")
+    print("[+] Login successful!")
 
 driver.quit()
